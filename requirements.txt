@@ -1,3 +1,9 @@
 altair
 pandas
 streamlit
+fastapi
+uvicorn
+xgboost
+scikit-learn==1.7.2
+numpy
+pydantic
