@@ -4,7 +4,7 @@ import pickle
 
 # Charger le modèle
 with open("model_xgb.pkl", "rb") as f:
-    model = pickle.load(f)
+    model = pickle.loa
 
 st.title("Prédiction de l'employé avec XGBoost")
 
