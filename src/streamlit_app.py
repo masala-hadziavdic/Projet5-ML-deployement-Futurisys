@@ -42,7 +42,7 @@ if st.button("Prédire"):
     statut_marital_num = statut_marital_map.get(statut_marital, 3)
     niveau_education_map = {"Bac":0, "Bac+2":1, "Bac+3":2, "Bac+5":3, "Doctorat":4}
     niveau_education_num = niveau_education_map.get(niveau_education, 0)
-    frequence_deplacement_map = {"Jamais":0, "Rarement":1, "Souvent":2, "Très souvent":3}
+    frequence_deplacement_map = {"Aucun":0, "Occasionnel":1, "Frequent":2}
     frequence_deplacement_num = frequence_deplacement_map.get(frequence_deplacement, 0)
     augementation_num = 1 if augementation_salaire_precedente == "Oui" else 0
     
