@@ -2,9 +2,9 @@ import streamlit as st
 import numpy as np
 import pickle
 
-# Charger le modèle
-with open("model_xgb.pkl", "rb") as f:
+with open("src/model_xgb.pkl", "rb") as f:
     model = pickle.load(f)
+
 
 st.title("Prédiction de l'employé avec XGBoost")
 
