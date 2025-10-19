@@ -20,7 +20,7 @@ nombre_participation_pee = st.number_input("Nombre de participations PEE", min_v
 nb_formations_suivies = st.number_input("Nombre de formations suivies", min_value=0)
 distance_domicile_travail = st.number_input("Distance domicile-travail (km)", min_value=0)
 niveau_education = st.selectbox("Niveau d'éducation(1-5)", 1, 5, 1)
-domaine_etude = st.selectbox("Domaine d'étude"), options=["Infra & Cloud", "Transformation Digitale", "Marketing", "Entrepreunariat", "Autre"]
+domaine_etude = st.selectbox("Domaine d'étude", options=["Infra & Cloud", "Transformation Digitale", "Marketing", "Entrepreunariat", "Autre"])
 frequence_deplacement = st.selectbox("Fréquence déplacement", options=["Occasionnel", "Frequent", "Aucun"])
 annees_depuis_la_derniere_promotion = st.number_input("Années depuis la dernière promotion", min_value=0)
 satisfaction_employee_environnement = st.slider("Satisfaction environnement (1-10)", 1, 10, 5)
