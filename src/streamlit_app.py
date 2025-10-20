@@ -36,80 +36,73 @@ augementation_salaire_precedente = st.selectbox("Augmentation salaire précéden
 
 # Bouton prédiction
 if st.button("Prédire"):
-# Mapping / encodage des variables catégorielles
-genre_num = 1 if genre == "H" else 0
+    genre_num = 1 if genre == "H" else 0
+    statut_marital_map = {"Célibataire": 0, "Marié": 1, "Divorcé": 2, "Autre": 3}
+    statut_marital_num = statut_marital_map.get(statut_marital, 3)
 
-statut_marital_map = {"Célibataire": 0, "Marié": 1, "Divorcé": 2, "Autre": 3}
-statut_marital_num = statut_marital_map.get(statut_marital, 3)
-niveau_education_num = niveau_education
-frequence_deplacement_map = {"Aucun": 0, "Occasionnel": 1, "Frequent": 2}
-frequence_deplacement_num = frequence_deplacement_map.get(frequence_deplacement, 0)
-departement_num = 0  
-domaine_etude_num = 0 
-augementation_num = augementation_salaire_precedente
+    niveau_education_num = niveau_education
+    frequence_deplacement_map = {"Aucun": 0, "Occasionnel": 1, "Frequent": 2}
+    frequence_deplacement_num = frequence_deplacement_map.get(frequence_deplacement, 0)
 
+    departement_num = 0
+    domaine_etude_num = 0
+    augementation_num = augementation_salaire_precedente
 
-
-# 
-features = [
-    'age',
-    'genre',
-    'revenu_mensuel',
-    'statut_marital',
-    'departement',
-    'nombre_experiences_precedentes',
-    'annees_dans_l_entreprise',
-    'nombre_participation_pee',
-    'nb_formations_suivies',
-    'distance_domicile_travail',
-    'niveau_education',
-    'domaine_etude',
-    'frequence_deplacement',
-    'annees_depuis_la_derniere_promotion',
-    'satisfaction_employee_environnement',
-    'note_evaluation_precedente',
-    'satisfaction_employee_nature_travail',
-    'satisfaction_employee_equipe',
-    'satisfaction_employee_equilibre_pro_perso',
-    'note_evaluation_actuelle',
-    'augementation_salaire_precedente'
+    features = [
+        'age',
+        'genre',
+        'revenu_mensuel',
+        'statut_marital',
+        'departement',
+        'nombre_experiences_precedentes',
+        'annees_dans_l_entreprise',
+        'nombre_participation_pee',
+        'nb_formations_suivies',
+        'distance_domicile_travail',
+        'niveau_education',
+        'domaine_etude',
+        'frequence_deplacement',
+        'annees_depuis_la_derniere_promotion',
+        'satisfaction_employee_environnement',
+        'note_evaluation_precedente',
+        'satisfaction_employee_nature_travail',
+        'satisfaction_employee_equipe',
+        'satisfaction_employee_equilibre_pro_perso',
+        'note_evaluation_actuelle',
+        'augementation_salaire_precedente'
 ]
 
-# 
-input_values = [
-    age,
-    genre_num,
-    revenu_mensuel,
-    statut_marital_num,
-    departement_num,
-    nombre_experiences_precedentes,
-    annees_dans_l_entreprise,
-    nombre_participation_pee,
-    nb_formations_suivies,
-    distance_domicile_travail,
-    niveau_education_num,
-    domaine_etude_num,
-    frequence_deplacement_num,
-    annees_depuis_la_derniere_promotion,
-    satisfaction_employee_environnement,
-    note_evaluation_precedente,
-    satisfaction_employee_nature_travail,
-    satisfaction_employee_equipe,
-    satisfaction_employee_equilibre_pro_perso,
-    note_evaluation_actuelle,
-    augementation_num
-]
+    input_values = [
+        age,
+        genre_num,
+        revenu_mensuel,
+        statut_marital_num,
+        departement_num,
+        nombre_experiences_precedentes,
+        annees_dans_l_entreprise,
+        nombre_participation_pee,
+        nb_formations_suivies,
+        distance_domicile_travail,
+        niveau_education_num,
+        domaine_etude_num,
+        frequence_deplacement_num,
+        annees_depuis_la_derniere_promotion,
+        satisfaction_employee_environnement,
+        note_evaluation_precedente,
+        satisfaction_employee_nature_travail,
+        satisfaction_employee_equipe,
+        satisfaction_employee_equilibre_pro_perso,
+        note_evaluation_actuelle,
+        augementation_num
+    ]
 
-# création d’un DataFrame conforme au pipeline
-X = pd.DataFrame([input_values], columns=features)
+    X = pd.DataFrame([input_values], columns=features)
+    pred = model.predict(X)
+    try:
+        proba = model.predict_proba(X)
+    except AttributeError:
+        proba = None
 
-# prédiction
-pred = model.predict(X)
-try:
-    proba = model.predict_proba(X)
-except AttributeError:
-    proba = None
-
-st.write(f"**Prédiction :** {pred[0]}")
-if proba is not None:
-    st.write(f"**Probabilités :** {proba[0]}")
+    st.write(f"**Prédiction :** {pred[0]}")
+    if proba is not None:
+        st.write(f"**Probabilités :** {proba[0]}")
