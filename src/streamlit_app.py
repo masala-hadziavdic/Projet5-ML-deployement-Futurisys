@@ -96,9 +96,10 @@ if st.button("Prédire"):
         augementation_salaire_precedente
 ]
 
-X = pd.DataFrame([input_values], columns=features)
-pred = model.predict(X)
+    X = pd.DataFrame([input_values], columns=features)
 
+    # --- bloc prédiction ---
+    pred = model.predict(X)
     try:
         proba = model.predict_proba(X)
     except AttributeError:
