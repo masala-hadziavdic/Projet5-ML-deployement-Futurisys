@@ -34,19 +34,16 @@ augementation_salaire_precedente = st.selectbox("Augmentation salaire précéden
 
 # Bouton prédiction
 if st.button("Prédire"):
-    # Préparer les données en respectant l'ordre de ton modèle
-    # ATTENTION: il faut que les catégories soient encodées comme lors de l'entraînement !
-    # Ici, on met juste un exemple simple où on transforme "Oui"/"Non" en 1/0 et "Homme"/"Femme" pareil.
-    
- genre_num = 1 if genre == "H" else 0
-statut_marital_map = {"Célibataire": 0, "Marié": 1, "Divorcé": 2, "Autre": 3}
-statut_marital_num = statut_marital_map.get(statut_marital, 3)
-niveau_education_num = niveau_education
-frequence_deplacement_map = {"Aucun":0, "Occasionnel":1, "Frequent":2}
-frequence_deplacement_num = frequence_deplacement_map.get(frequence_deplacement, 0)
-departement_num = 0
-domaine_etude_num = 0
-augementation_num = augementation_salaire_precedente
+    genre_num = 1 if genre == "H" else 0
+    statut_marital_map = {"Célibataire": 0, "Marié": 1, "Divorcé": 2, "Autre": 3}
+    statut_marital_num = statut_marital_map.get(statut_marital, 3)
+    niveau_education_num = niveau_education
+    frequence_deplacement_map = {"Aucun":0, "Occasionnel":1, "Frequent":2}
+    frequence_deplacement_num = frequence_deplacement_map.get(frequence_deplacement, 0)
+    departement_num = 0
+    domaine_etude_num = 0
+    augementation_num = augementation_salaire_precedente
+
     
     features = [
         age,
@@ -71,7 +68,7 @@ augementation_num = augementation_salaire_precedente
         note_evaluation_actuelle,
         augementation_num
     ]
-    
+
     X = np.array(features).reshape(1, -1)
     pred = model.predict(X)
     proba = None
