@@ -74,18 +74,18 @@ if st.button("Prédire"):
 
     input_values = [
         age,
-        genre_num,
+        genre,
         revenu_mensuel,
-        statut_marital_num,
-        departement_num,
+        statut_marital,
+        departement,
         nombre_experiences_precedentes,
         annees_dans_l_entreprise,
         nombre_participation_pee,
         nb_formations_suivies,
         distance_domicile_travail,
-        niveau_education_num,
-        domaine_etude_num,
-        frequence_deplacement_num,
+        niveau_education,
+        domaine_etude,
+        frequence_deplacement,
         annees_depuis_la_derniere_promotion,
         satisfaction_employee_environnement,
         note_evaluation_precedente,
@@ -93,11 +93,12 @@ if st.button("Prédire"):
         satisfaction_employee_equipe,
         satisfaction_employee_equilibre_pro_perso,
         note_evaluation_actuelle,
-        augementation_num
-    ]
+        augementation_salaire_precedente
+]
 
-    X = pd.DataFrame([input_values], columns=features)
-    pred = model.predict(X)
+X = pd.DataFrame([input_values], columns=features)
+pred = model.predict(X)
+
     try:
         proba = model.predict_proba(X)
     except AttributeError:
