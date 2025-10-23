@@ -22,7 +22,8 @@ jobs:
       - name: Installer les dépendances
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r ../../requirements.txt   # si requirements.txt est à la racine
 
       - name: Lancer le test modèle
-        run: python test_model.py
+        run: python .github/workflows/test_model.py
+
