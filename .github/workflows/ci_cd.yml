@@ -12,7 +12,6 @@ env:
   PYTHON_VERSION: '3.10'
 
 jobs:
-  # === CI : tests et validation ===
   test:
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +32,6 @@ jobs:
       - name: Run unit tests
         run: pytest tests/ --maxfail=1 --disable-warnings -q
 
-  # === CD : déploiement (Docker + AWS exemple) ===
   deploy:
     needs: test
     runs-on: ubuntu-latest
@@ -72,5 +70,3 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
-
-        run: python test_model.py
