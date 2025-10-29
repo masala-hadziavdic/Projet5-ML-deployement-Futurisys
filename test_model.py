@@ -36,7 +36,7 @@ def main():
     print("✅ Prédiction :", preds)
 
     # Vérification simple
-    assert preds.shape[0] == X_test.shape[0], 
+    assert preds.shape[0] == X_test.shape[0], "❌ Nombre de prédictions incorrect"
 
 if __name__ == "__main__":
     main()
