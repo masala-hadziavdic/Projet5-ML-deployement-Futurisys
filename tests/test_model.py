@@ -1,12 +1,10 @@
 import pickle
 import pandas as pd
 
-def main():
-    # Charger le modèle
+def test_model_prediction():
     with open('model_xgb.pkl', 'rb') as f:
         model = pickle.load(f)
 
-    # Exemple de données de test (adapter les colonnes selon ton entraînement)
     X_test = pd.DataFrame([{
         "age": 30,
         "genre": "H",
@@ -31,12 +29,8 @@ def main():
         "augementation_salaire_precedente": 12
     }])
 
-    # Prédiction
     preds = model.predict(X_test)
     print("✅ Prédiction :", preds)
 
-    # Vérification simple
-    assert preds.shape[0] == X_test.shape[0], "❌ Nombre de prédictions incorrect"
-
-if __name__ == "__main__":
-    main()
+    # ✅ Ensure the model returns a prediction
+    assert len(preds) == 1, "The model did not return a prediction"
